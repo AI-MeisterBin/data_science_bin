@@ -2,8 +2,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 import pandas as pd
-import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 
 plt.rc('font', family = 'Malgun Gothic')
@@ -30,8 +28,8 @@ print(pre_sale['규모구분'].value_counts())
 print(pre_sale['연도'].value_counts())
 
 pre_sale_low_60 = pre_sale[pre_sale['규모구분'] == '전용면적 60㎡이하']
-print(pre_sale_low_60.head())
-pre_sale_low_60_seoul = pre_sale_low_60[pre_sale_low_60['지역명'] == '서울']
-print(pre_sale_low_60_seoul.head())
-pre_sale_low_60_seoul.plot(y = ['평당분양가격'] )
+pre_sale_low_60_Seoul = pre_sale_low_60[pre_sale_low_60['지역명'] == '서울']
+pre_sale_low_60_Chungbuk = pre_sale_low_60[pre_sale_low_60['지역명'] == '충북']
+pre_sale_low_60_Seoul.plot(y = ['평당분양가격'])
+pre_sale_low_60_Chungbuk.plot(y = ['평당분양가격'])
 plt.show()
