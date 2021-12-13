@@ -1,12 +1,12 @@
 import warnings
 warnings.filterwarnings('ignore')
 
-import sys
 import pandas as pd
 import numpy as np
-import re
-from plotnine import *
+import matplotlib
+import matplotlib.pyplot as plt
 
+plt.rc('font', family = 'Malgun Gothic')
 
 pre_sale = pd.read_csv('전국_평균_분양가격_2021.7월_.csv', sep='\t', engine='python', encoding='CP949') # 파일 불러오기
 
@@ -28,3 +28,10 @@ print(pre_sale.describe())
 print(pre_sale['지역명'].value_counts())
 print(pre_sale['규모구분'].value_counts())
 print(pre_sale['연도'].value_counts())
+
+pre_sale_low_60 = pre_sale[pre_sale['규모구분'] == '전용면적 60㎡이하']
+print(pre_sale_low_60.head())
+pre_sale_low_60_seoul = pre_sale_low_60[pre_sale_low_60['지역명'] == '서울']
+print(pre_sale_low_60_seoul.head())
+pre_sale_low_60_seoul.plot(y = ['평당분양가격'] )
+plt.show()
